@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Distributed Rate Limiting</title>
+
+    <meta name="description" content="impress.js is a presentation tool based on the power of CSS3 transforms and transitions in modern browsers and inspired by the idea behind prezi.com." />
+    <meta name="author" content="Bartek Szopka" />
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+    <link href="css/impress-demo.css" rel="stylesheet" />
+    <link href="css/custom.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="favicon.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+</head>
+
+<body class="impress-not-supported">
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div id="impress">
+
+    <div id="intro" class="step" data-x="0" data-y="0" data-scale="10">
+      <div class="text1 title">Distributed</div>
+      <div class="text2 title">Rate Limiting</div>
+      <p>Richard Ramsden</p>
+    </div>
+
+    <div id="bravenet" class="step slide" data-x="-8000" data-y="2000" data-scale=1>
+      <img src="images/bravenetmedia_logo.png"/>
+      <hr/>
+      <ul>
+        <li>Matchmaker between Publishers and Advertisers</li>
+        <li>Aggregate listings from Advertisers and serve XML to Publishers</li>
+      </ul>
+      <br/>
+      <img src="images/ads.png"/>
+    </div>
+
+    <div id="what" class="step" data-x="-7000" data-y="2000" data-scale=1>
+      <div class="text3 title">What the heck is</div>
+      <div class="text2 title">Rate Limiting?</div>
+    </div>
+
+    <div id="scotty" class="step" data-x="-6000" data-y="2000" data-scale=1>
+      <div class="text6 meme">Scotty, we need more power!</div>
+      <img src="images/scotty.jpg"/>
+      <div class="text6 meme">She can't take much more captain</div>
+    </div>
+
+    <div id="examples" class="step slide" data-x="-5000" data-y="2000" data-scale=1>
+      <h2>Examples</h2>
+      <hr/>
+      <ul>
+        <li>Internet service providers can't give you infinite bandwidth :(</li>
+        <li>Some ATM machines only allow you to withdraw $500 per day</li>
+        <li>There's a maximum number of Xbox live points you can add to your account per day</li>
+        <li>Cell providers rate limit text messaging</li>
+      </ul>
+    </div>
+
+    <div id="who" class="step" data-x="-4000" data-y="2000" data-scale=1>
+      <div class="text1 title">Who?</div>
+    </div>
+
+    <div id="who-2" class="step" data-x="-3000" data-y="2000" data-scale=1>
+    </div>
+
+    <div id="how" class="step slide" data-x="-2000" data-y="2000" data-scale=1>
+      <img src="images/bravenetmedia_logo.png"/>
+      <hr/>
+      <h2>What we rate limit</h2>
+      <hr/>
+
+      <ul style="float:left">
+        <li>Requests</li>
+        <li>Clicks</li>
+        <li>Revenue</li>
+      </ul>
+
+      <div style="padding-top: 45px; width:500px; float:right">
+        <img width=500 src="images/ads.png"/>
+      </div>
+    </div>
+
+    <div id="how" class="step slide" data-x="-2000" data-y="2000" data-scale=1>
+      <img src="images/rate-limited.png"/>
+    </div>
+
+    <div id="old-arch" class="step slide" data-x="-1000" data-y="2000" data-scale=1>
+      <img src="images/old-arch.png"/>
+    </div>
+
+    <div id="problems" class="step slide" data-x="0" data-y="2000" data-scale=1>
+      <h2>Problems</h2>
+      <hr/>
+      <ul>
+        <li>Using a single server for inter-server communication</li>
+        <li>System was not really "distributed"</li>
+        <li>Couldn't scale with increasing demand</li>
+        <li>Programming language was not designed for distributed systems</li>
+      </ul>
+    </div>
+
+    <div id="cloud" class="step" data-x="1000" data-y="2000" data-scale=1>
+      <div class="text4 title">Cloud Computing</div>
+      <img src="images/cloud.jpg"/>
+    </div>
+
+    <div id="erlang" class="step" data-x="1000" data-y="2000" data-scale=1>
+      <img src="images/erlang.png"/>
+    </div>
+
+    <div id="new-arch" class="step slide" data-x="2000" data-y="2000" data-scale=1>
+      <img src="images/new-arch.png"/>
+    </div>
+
+    <div id="new-arch-2" class="step slide" data-x="2000" data-y="2000" data-scale=1>
+      <h2>Cluster</h1>
+      <hr/>
+      <ul>
+        <li>A <b>cluster</b> of a set of loosely connected computers that work together so that in many respects they can be viewed as a single system.</li>
+      </ul>
+      <img src="images/new-arch-2.png"/>
+    </div>
+
+    <div id="problem" class="step" data-x="3000" data-y="2000" data-scale=1>
+      <div class="container"></div>
+    </div>
+
+    <div id="poorman" class="step slide" data-x="4000" data-y="2000" data-scale=1>
+      <h2>Fairshare Approach</h2>
+      <hr/>
+      <ul>
+        <li>Take rate limit divide it by the number of servers</li>
+        <li>This works (sort of)</li>
+      </ul>
+      <br/>
+      <img src="images/poor-man.jpg"/>
+    </div>
+
+    <div id="poorman-2" class="step" data-x="4000" data-y="2000" data-scale=1>
+      <img src="images/traffic.png"/>
+    </div>
+
+    <div id="poorman-problem" class="step slide" data-x="4000" data-y="2000" data-scale=1>
+      <h2>Problems</h2>
+      <hr/>
+      <ul>
+        <li>Not all servers are created equal</li>
+        <li>Demand at each server is not necessarily the same</li>
+      </ul>
+
+      <br/>
+      <img src="images/multiple-vm.jpg"/>
+    </div>
+
+
+    <div id="research" class="step" data-x="5000" data-y="2000" data-scale=1>
+      <!-- Company looked around, read other whitepapers, couldn't find anything on the subject -->
+      <div class="text1 title">Research</div>
+    </div>
+
+    <div id="research-2" class="step" data-x="6000" data-y="2000" data-scale=1>
+      <div class="text6 title">Wants to design algorithm</div>
+      <img height=350 src="images/fry.jpg"/>
+      <div class="text6 title">to efficiently spam people</div>
+    </div>
+
+    <div id="dist-algorithms" class="step slide" data-x="7000" data-y="2000" data-scale=1>
+      <h2>Distributed Algorithms</h2>
+      <hr/>
+      <ul>
+        <li>Different from traditional computing</li>
+        <li>Execution happens concurrently on seperate machines</li>
+        <li>Difficult to coordinate independant parts of an algorithm in the face of unreliable communications links.</li>
+        <li>Power failures, broken hardware, people tripping over power cords, vortex to other demensions destroying mission critical components</li>
+      </ul>
+    </div>
+
+    <div id="onedoesnot" class="step" data-x="8000" data-y="2000" data-scale=1>
+      <div class="text5 meme">One does not simply</div>
+      <img height=250 src="images/onedoesnot.jpg"/>
+      <div class="text6 meme">Create a distributed algorithm</div>
+    </div>
+
+    <div id="sad-bunny" class="step" data-x="9000" data-y="2000" data-scale=1>
+      <img height=250 src="images/sad-bunny.png"/>
+      <!-- Cloud sounds like a very scary place, vortexes and all, where do I start? -->
+      <div class="text5">Where do I start?</div>
+    </div>
+
+    <div id="design-goals" class="step slide" data-x="10000" data-y="2000" data-scale=1>
+      <h2>Formal Definition</h2>
+      <hr/>
+
+      <ul>
+        <li>Want to distribute a number based on current demand at servers</li>
+        <li>The aggregate sum of all limiters should equal the cluster rate limit</li>
+      </ul>
+      <br/><br/>
+      <img height=200 src="images/formal.png"/>
+    </div>
+
+    <div id="buckets" class="step slide" data-x="11000" data-y="2000" data-scale=1>
+      <img src="images/fill.png"/>
+      <img src="images/buckets.png"/>
+      <h2>Handling 800 / 1000</h2>
+    </div>
+
+    <div id="buckets-2" class="step slide" data-x="11000" data-y="2000" data-scale=1>
+      <img src="images/fill.png"/>
+      <img src="images/demand.png"/>
+      <h2>Handling 1000 / 1000</h2>
+    </div>
+
+    <div id="goal" class="step slide" data-x="12000" data-y="2000" data-scale=1>
+      <h2>Goal</h2>
+      <hr/>
+      <ul>
+        <li>We want fill percentage the same on all servers</li>
+      </ul>
+      <img src="images/formula.png"/>
+    </div>
+
+    <div id="overview" class="step" data-x="1000" data-y="0" data-scale="10">
+    </div>
+
+</div>
+
+<script>
+if ("ontouchstart" in document.documentElement) { 
+    document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+}
+</script>
+
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+
+</body>
+</html>

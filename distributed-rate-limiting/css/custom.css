@@ -1,0 +1,44 @@
+.slide ul {
+  margin-top: 25px;
+  margin-left: 25px;
+  font-size: 25px;
+  list-style: disc;
+}
+
+.slide ul li {
+  margin-top: 15px;
+  text-align: left;
+}
+
+.upcase { text-transform: uppercase; }
+.meme, .title { font-weight: bold; text-transform: uppercase; }
+
+.text1 { font-size: 90px; line-height: 100px; }
+.text2 { font-size: 80px; line-height: 90px; }
+.text3 { font-size: 70px; line-height: 80px; }
+.text4 { font-size: 60px; line-height: 70px; }
+.text5 { font-size: 50px; line-height: 60px; }
+.text6 { font-size: 40px; line-height: 50px; }
+
+.step {
+  text-align: center;
+  font-family: 'Open Sans', Arial, sans-serif;
+}
+
+.step h1 {
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.step h2 {
+  font-size: 40px;
+}
+
+#problem .container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 493px;
+  height: 491px;
+  background: url("../images/where.png") no-repeat;
+}
+
