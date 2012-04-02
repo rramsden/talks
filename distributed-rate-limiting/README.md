@@ -1,12 +1,16 @@
+Date: Tuesday April 3rd, 4:00
+Place: Building 356, Room 109 
+Speaker: Richard Ramsden (4th CSCI Student, Vancouver Island University)
+
 Distributed Rate Limiting
-=========================
+-------------------------
 
-Talk Abstract
--------------
+Abstract
+--------
 
-Imagine if you were left alone in the dark, with monsters everywhere. That's a bit like distributed computing.
-Servers simply vanish without a trace. Power failures, broken hardware, people tripping over cables, you name it.
-The cloud is very scary place. Creating algorithms for the distributed world requires you to account for all sorts of
-crazy problems. In my talk I will be covering the work I've been doing with rate limiting algorithms in distributed systems.
-More specifically, I will talk about the design process and challenges I faced creating and implementing
-an algorithm for the cloud.
+The Distributed Rate Limiting (DRL) problem can be described as trying to distribute service capacity (“service rate”), expressed as a number of service requests per time interval, over
+a group of N servers in such a way that the amount given to each server C_i is dependendant on the job population D_i at each server.
+We want to find a fair distribution of the service rate such that (D_i / C_i) is equal at every server. Creating a distributed algorithm to solve
+this problem is non-trivial since demand at each server is dynamic, i.e., changes with time. Furthermore, servers can fail for numerous reasons.
+Designing an algorithm which adapts quickly to change and is fault-tolerant is the main contribution of my research.
+The work presented in this talk comprises course work for a Directed Studies CSCI 485 under the supervision of Dr. David Wessels, in collaboration with Bravenet Media.
